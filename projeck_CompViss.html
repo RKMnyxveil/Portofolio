@@ -39,39 +39,6 @@
             animation: pulse 2s infinite alternate;
         }
 
-        .countdown {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .time-unit {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            min-width: 120px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .time-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            display: block;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .time-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
         .home-button {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -146,20 +113,6 @@
                 font-size: 2.5rem;
             }
             
-            .countdown {
-                gap: 0.5rem;
-                flex-wrap: wrap;
-            }
-            
-            .time-unit {
-                min-width: 80px;
-                padding: 1rem;
-            }
-            
-            .time-value {
-                font-size: 2rem;
-            }
-            
             .home-button {
                 padding: 10px 24px;
                 font-size: 1rem;
@@ -169,15 +122,6 @@
         @media (max-width: 480px) {
             .coming-soon {
                 font-size: 2rem;
-            }
-            
-            .time-unit {
-                min-width: 70px;
-                padding: 0.8rem;
-            }
-            
-            .time-value {
-                font-size: 1.5rem;
             }
             
             .home-button {
@@ -191,24 +135,6 @@
     <div class="particles" id="particles"></div>
     <div class="container">
         <h1 class="coming-soon">COMING SOON</h1>
-        <div class="countdown" id="countdown">
-            <div class="time-unit">
-                <span class="time-value" id="days">00</span>
-                <span class="time-label">Days</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="hours">00</span>
-                <span class="time-label">Hours</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="minutes">00</span>
-                <span class="time-label">Minutes</span>
-            </div>
-            <div class="time-unit">
-                <span class="time-value" id="seconds">00</span>
-                <span class="time-label">Seconds</span>
-            </div>
-        </div>
         <a href="/" class="home-button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -244,40 +170,6 @@
             
             particlesContainer.appendChild(particle);
         }
-        
-        // Countdown timer
-        function updateCountdown() {
-            // Set target date (30 days from now)
-            const now = new Date();
-            const targetDate = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
-            
-            const currentTime = new Date().getTime();
-            const targetTime = targetDate.getTime();
-            
-            const diff = targetTime - currentTime;
-            
-            if (diff <= 0) {
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                return;
-            }
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        // Update countdown every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
