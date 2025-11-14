@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio Proyek - Rian Kia Mado</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+        body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.navbar-brand,
+.nav-link {
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 0.75rem;
+}
+
+</style>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Rian Kia Mado</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Proyek</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Daftar Proyek Saya</h1>
+    <p class="lead text-muted">Beberapa proyek yang telah saya kembangkan selama kuliah dan pelatihan.</p>
+  </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4" id="projects-container">
+      <!-- Proyek akan dimuat di sini -->
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+  <div class="container text-center">
+    <p class="mb-0">&copy; 2025 Rian Kia Mado. Semua hak dilindungi.</p>
+    <div class="mt-2">
+      <a href="https://github.com/RKMnyxveil" class="text-light me-3" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/rian-kia-mado" class="text-light me-3" target="_blank">LinkedIn</a>
+      <a href="https://www.instagram.com/rian_kiamado/" class="text-light" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Data Proyek
+const projects = [
+  {
+    title: "E-Commerce Platform",
+    description: "Platform belanja online dengan fitur keranjang, checkout, dan manajemen produk. Dibangun menggunakan React dan Next.js.",
+    tech: ["React", "Next.js", "Tailwind CSS", "Node.js"],
+    link: "#",
+    image: "https://via.placeholder.com/600x400?text=E-Commerce"
+  },
+  {
+    title: "Analytics Dashboard",
+    description: "Dashboard visualisasi data penjualan dan performa bisnis berbasis web. Menggunakan chart library dan integrasi API.",
+    tech: ["JavaScript", "Chart.js", "Bootstrap", "REST API"],
+    link: "#",
+    image: "https://via.placeholder.com/600x400?text=Dashboard"
+  },
+  {
+    title: "Fitness Mobile App",
+    description: "Aplikasi mobile untuk pelacakan latihan, diet, dan progres kebugaran pengguna.",
+    tech: ["React Native", "Firebase", "UI/UX Design"],
+    link: "#",
+    image: "https://via.placeholder.com/600x400?text=Fitness+App"
+  }
+];
+
+// Render proyek
+const container = document.getElementById("projects-container");
+projects.forEach(project => {
+  const techTags = project.tech.map(tag => `<span class="badge bg-primary me-1">${tag}</span>`).join('');
+
+  const card = `
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        <img src="${project.image}" class="card-img-top" alt="${project.title}" style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${project.title}</h5>
+          <p class="card-text flex-grow-1">${project.description}</p>
+          <div class="mt-2 mb-3">
+            ${techTags}
+          </div>
+          <a href="${project.link}" class="btn btn-outline-dark mt-auto" target="_blank">Lihat Detail</a>
+        </div>
+      </div>
+    </div>
+  `;
+  container.innerHTML += card;
+});
+</script>
+</body>
+</html>
