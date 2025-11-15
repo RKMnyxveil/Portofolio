@@ -88,52 +88,31 @@
             line-height: 1.4;
         }
         
-        /* [DIUBAH] Style untuk daftar sertifikat horizontal */
+        /* [DIUBAH] Menggunakan Grid Layout */
         .certificates-list {
             padding: 15px;
             background: #f8fafc;
             
-            /* Ubah ke Flexbox horizontal */
-            display: flex;
-            flex-direction: row;
-            overflow-x: auto; /* Aktifkan scroll horizontal */
+            /* Ubah ke Grid */
+            display: grid;
+            grid-template-columns: 1fr; /* Default 1-kolom */
             gap: 15px; /* Jarak antar kartu */
-
-            /* Efek "snap" saat di-scroll */
-            scroll-snap-type: x mandatory;
-            
-            /* Menghormati padding saat "snap" */
-            scroll-padding: 15px; 
-
-            /* Sembunyikan scrollbar */
-            -ms-overflow-style: none;  /* IE dan Edge */
-            scrollbar-width: none;  /* Firefox */
         }
         
-        /* Sembunyikan scrollbar untuk Chrome, Safari */
-        .certificates-list::-webkit-scrollbar {
-            display: none;
-        }
-        
-        /* [DIUBAH] Style untuk kartu sertifikat */
+        /* [DIUBAH] Kartu untuk Grid */
         .certificate-card {
             background: var(--card-bg);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            /* margin-bottom: 15px; <-- Dihapus */
             transition: var(--transition);
-
-            /* Tentukan lebar dan cegah kartu "menyusut" */
-            width: 85%; /* Sekitar 85% agar terlihat ada kartu berikutnya */
-            flex-shrink: 0;
-
-            /* Tentukan titik "snap" */
-            scroll-snap-align: start;
+            
+            /* [DIHAPUS] Properti carousel seperti width: 85%, flex-shrink, dll. */
+            width: 100%; /* Biarkan grid yang mengatur lebar */
         }
         
         .certificate-card:last-child {
-            /* Kosong, margin-bottom tidak lagi diperlukan */
+            /* Kosong */
         }
         
         .certificate-card:hover {
@@ -172,7 +151,6 @@
             padding: 15px 20px;
         }
         
-        /* [DIUBAH] Style untuk <button> pratinjau */
         .certificate-preview {
             /* Reset button styles */
             background: #f8fafc;
@@ -206,7 +184,6 @@
             border: none;
         }
 
-        /* [BARU] CSS untuk menangani error gambar pratinjau */
         .certificate-preview.image-error {
             background: #f8fafc;
             color: var(--text-gray);
@@ -215,11 +192,11 @@
             font-size: 0.9rem;
         }
         .certificate-preview.image-error img {
-            display: none; /* Sembunyikan gambar yang rusak */
+            display: none;
         }
         .certificate-preview.image-error::after {
             font-family: "Font Awesome 6 Free";
-            content: '\f091'; /* ikon fa-trophy */
+            content: '\f091';
             font-weight: 900;
             font-size: 2rem;
             display: block;
@@ -302,7 +279,6 @@
             font-weight: 700;
         }
         
-        /* [DIUBAH] Style untuk <button> close */
         .close-modal {
             background: none;
             border: none;
@@ -368,6 +344,11 @@
             .certificate-title { font-size: 1.3rem; }
             .certificate-preview { height: 220px; }
             .info-item, .info-label, .info-text { font-size: 0.9rem; }
+
+            /* [BARU] Jadikan 2-kolom di layar yang lebih besar */
+            .certificates-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (min-width: 1024px) {
@@ -378,7 +359,7 @@
         /* Scrollbar styling */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #c5c5c5; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #c5c5cc; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         .modal-image-container {
             scrollbar-width: thin;
@@ -387,6 +368,7 @@
     </style>
 </head>
 <body>
+    
     <div class="container">
         <div class="mobile-header">
             <a href="index.html" class="back-btn">
@@ -472,8 +454,8 @@
                     </div>
                 </div>
                 <div class="certificate-body">
-                    <button class="certificate-preview" data-src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg">
-                        <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg" alt="Certificate Preview">
+                    <button class="certificate-preview" data-src="https"zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg"">
+                        <img src="https"zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg"" alt="Certificate Preview">
                     </button>
                     <div class="certificate-info">
                         <div class="info-item">
@@ -518,58 +500,49 @@
             
             let focusedElementBeforeModal;
 
-            // Fungsi untuk membuka modal
             function openModal(imageUrl) {
-                focusedElementBeforeModal = document.activeElement; // Simpan elemen yang sedang fokus
+                focusedElementBeforeModal = document.activeElement;
                 modalImage.src = imageUrl;
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                closeModalButton.focus(); // Pindahkan fokus ke tombol close di modal
+                closeModalButton.focus();
             }
             
-            // Fungsi untuk menutup modal
             function closeModal() {
                 modal.style.display = 'none';
                 document.body.style.overflow = 'auto';
                 if (focusedElementBeforeModal) {
-                    focusedElementBeforeModal.focus(); // Kembalikan fokus ke tombol pratinjau
+                    focusedElementBeforeModal.focus();
                 }
             }
             
-            // Tambahkan event listener untuk setiap tombol pratinjau
             previewButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    const imageUrl = button.dataset.src; // Ambil URL dari data-src
+                    const imageUrl = button.dataset.src;
                     openModal(imageUrl);
                 });
             });
 
-            // Tambahkan event listener untuk tombol close
             closeModalButton.addEventListener('click', closeModal);
             
-            // Close modal when clicking outside
             window.addEventListener('click', (event) => {
                 if (event.target === modal) {
                     closeModal();
                 }
             });
             
-            // Close modal with Escape key
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     closeModal();
                 }
             });
             
-            // [BARU] Handle image load errors untuk pratinjau
             previewImages.forEach(img => {
                 img.onerror = function() {
-                    // Ganti 'this' (img) menjadi 'this.parentElement' (button)
                     this.parentElement.classList.add('image-error');
                 }
             });
 
-            // Handle image load errors di dalam modal
             modalImage.onerror = function() {
                 this.src = 'https://placehold.co/600x800/e2e8f0/64748b?text=Gambar+Tidak+Ditemukan';
                 this.alt = 'Gambar tidak dapat dimuat';
