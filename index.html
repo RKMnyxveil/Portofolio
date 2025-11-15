@@ -692,13 +692,14 @@
                 font-size: 1.1rem;
             }
         }
-
-        /* [Opsi 1: Animasi Efek Mengetik]
-   Tambahkan ini di akhir tag <style> Anda
+/* [Opsi 1: Animasi Efek Mengetik - Diperbarui]
+   Gantikan kode animasi sebelumnya dengan ini.
 --------------------------------------------------- */
 
-/* 1. Animasi untuk "Hi, I'm" (slide dari bawah) */
+/* 1. Kontainer untuk "Hi, I'm YL3R" - sekarang sejajar */
 .hero-content h1 {
+    display: flex; /* Mengatur item agar sejajar */
+    align-items: baseline; /* Menjaga teks dasar sejajar */
     opacity: 0; /* Mulai tak terlihat */
     animation: slideUp 0.6s 0.5s ease-out forwards; /* 0.5s delay */
 }
@@ -714,7 +715,7 @@
     }
 }
 
-/* 2. Persiapan "YL3R" untuk mengetik */
+/* 2. Persiapan "YL3R" untuk mengetik dan berulang */
 .hero-content h1 span {
     display: inline-block; /* Diperlukan agar 'width' berfungsi */
     overflow: hidden;      /* Menyembunyikan teks yang belum "diketik" */
@@ -723,12 +724,14 @@
     border-right: 4px solid var(--accent); /* Kursor/caret */
     
     /* Animasi: 
-       1. 'typing': durasi 1.5s, 4 langkah (Y-L-3-R), delay 1.2s (setelah "Hi, I'm" muncul)
+       1. 'typing': durasi 1.5s, 4 langkah (Y-L-3-R), delay 1.2s, berulang terus
        2. 'blink-caret': berkedip selamanya setelah 1.2s
+       3. 'erase': untuk menghapus teks, durasi 1.0s, 4 langkah, delay 4.2s, berulang terus
     */
     animation: 
-        typing 1.5s steps(4, end) 1.2s forwards,
-        blink-caret .75s step-end infinite 1.2s;
+        typing 1.5s steps(4) 1.2s forwards, /* Mengetik YL3R */
+        blink-caret .75s step-end infinite 1.2s, /* Kursor berkedip */
+        erase 1.0s steps(4) 4.2s forwards infinite alternate; /* Menghapus dan berulang */
 }
 
 /* 3. Keyframe untuk animasi 'typing' (mengubah lebar) */
@@ -743,10 +746,20 @@
     50% { border-color: var(--accent); }
 }
 
-/* 5. Sedikit penyesuaian untuk tombol di bawahnya */
+/* 5. Keyframe baru untuk 'erase' (mengurangi lebar) */
+@keyframes erase {
+    from { width: 4.1ch; }
+    to { width: 0; }
+}
+
+/* 6. Sedikit penyesuaian untuk tombol di bawahnya */
 .hero-btns {
     opacity: 0;
-    animation: slideUp 0.6s 1.8s ease-out forwards; /* Delay 1.8s, muncul setelah YL3R selesai diketik */
+    /* Muncul setelah animasi mengetik pertama selesai, lalu tetap terlihat */
+    animation: slideUp 0.6s 2.7s ease-out forwards; 
+    /* Durasi total 1.5s (typing) + 1.0s (erase) + delay = 2.5s.
+       Tombol muncul di 2.7s untuk sedikit buffer.
+       Karena animasi berulang, tombol tidak akan menghilang lagi. */
 }
     </style>
 </head>
