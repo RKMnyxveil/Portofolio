@@ -14,153 +14,143 @@
         }
         
         :root {
-            --primary-gradient: linear-gradient(120deg, #4f46e5, #7c3aed);
-            --secondary-gradient: linear-gradient(90deg, #10b981, #34d399);
-            --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            --card-bg: white;
-            --text-primary: #1f2937;
-            --text-secondary: #374151;
-            --text-muted: #6b7280;
+            --primary-bg: #2563eb;
+            --secondary-bg: #60a5fa;
+            --accent-bg: #7c3aed;
+            --card-bg: #ffffff;
+            --text-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
             --border-color: #e2e8f0;
-            --success-bg: #f0fdf4;
-            --success-text: #166534;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --transition: all 0.2s ease;
         }
         
         body {
-            background: var(--bg-gradient);
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             min-height: 100vh;
             padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 16px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 420px;
             width: 100%;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
+        /* Mobile Header */
+        .mobile-header {
+            background: var(--primary-bg);
+            color: var(--text-white);
+            padding: 15px 20px;
             position: relative;
-            padding-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .back-btn {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-            color: #4f46e5;
-            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-white);
+            padding: 6px 12px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            display: inline-flex;
+            font-size: 0.9rem;
+            display: flex;
             align-items: center;
             gap: 6px;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            font-size: 0.95rem;
+            transition: var(--transition);
         }
         
         .back-btn:hover {
-            background: #f3f4f6;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.3);
         }
         
-        .header-content {
-            margin-top: 10px;
+        .header-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.3;
         }
         
-        .header h1 {
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            line-height: 1.2;
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+            line-height: 1.4;
         }
         
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-        
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
+        .certificates-list {
+            padding: 15px;
+            background: #f8fafc;
+            min-height: 50vh;
         }
         
         .certificate-card {
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .certificate-card:last-child {
+            margin-bottom: 0;
         }
         
         .certificate-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
         
         .certificate-header {
-            background: var(--primary-gradient);
+            background: linear-gradient(120deg, #7c3aed, #9333ea);
             color: white;
-            padding: 20px;
-            position: relative;
-        }
-        
-        .certificate-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--secondary-gradient);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .certificate-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            font-size: 1.5rem;
             color: #fbbf24;
         }
         
         .certificate-title {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 8px;
             line-height: 1.3;
+            margin-bottom: 4px;
         }
         
         .certificate-issuer {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
             font-weight: 500;
         }
         
         .certificate-body {
-            padding: 20px;
+            padding: 15px 20px;
         }
         
-        .certificate-pdf {
+        .certificate-preview {
             width: 100%;
-            height: 160px;
+            height: 180px;
             background: #f8fafc;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             overflow: hidden;
-            border: 2px solid var(--border-color);
+            border: 1px solid var(--border-color);
             cursor: pointer;
             position: relative;
             display: flex;
@@ -168,128 +158,46 @@
             justify-content: center;
         }
         
-        .certificate-pdf img {
+        .certificate-preview img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             border: none;
         }
         
-        .certificate-pdf:hover {
+        .certificate-preview:hover {
             background: #f1f5f9;
         }
         
-        .pdf-placeholder {
-            color: #94a3b8;
-            text-align: center;
-            padding: 15px;
+        .certificate-info {
+            margin-bottom: 12px;
         }
         
-        .pdf-placeholder i {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .certificate-details {
-            margin-bottom: 15px;
-        }
-        
-        .detail-item {
+        .info-item {
             display: flex;
-            margin-bottom: 10px;
             align-items: flex-start;
-        }
-        
-        .detail-icon {
-            color: #4f46e5;
-            margin-right: 10px;
-            font-size: 1rem;
-            min-width: 18px;
-            margin-top: 3px;
-        }
-        
-        .detail-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-right: 4px;
-        }
-        
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .skill-tag {
-            background: #f3f4f6;
-            color: #4f46e5;
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid #e5e7eb;
-            white-space: nowrap;
-        }
-        
-        .certificate-footer {
-            padding: 15px 20px;
-            background: #f9fafb;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-bottom: 8px;
             gap: 8px;
         }
         
-        .issue-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
+        .info-icon {
+            color: #4f46e5;
+            font-size: 0.9rem;
+            min-width: 16px;
+            margin-top: 2px;
         }
         
-        .verification-badge {
-            background: linear-gradient(120deg, #10b981, #059669);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 0.8rem;
+        .info-label {
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-        }
-        
-        .view-full-btn {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
+            color: var(--text-dark);
             font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            margin-top: 10px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
+            margin-right: 4px;
         }
         
-        .view-full-btn:hover {
-            transform: translateY(-2px);
+        .info-text {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
         
         /* Modal Styling */
@@ -303,164 +211,174 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(8px);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 95%;
+            max-height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
         }
         
         .modal-header {
+            background: var(--primary-bg);
             color: white;
-            text-align: center;
-            padding: 15px;
-            background: var(--primary-gradient);
-            border-radius: 12px 12px 0 0;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .modal-header h3 {
-            font-size: 1.3rem;
+        .modal-title {
+            font-size: 1rem;
             font-weight: 700;
         }
         
         .close-modal {
-            position: absolute;
-            top: 12px;
-            right: 18px;
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s ease;
-            z-index: 1001;
         }
         
         .close-modal:hover {
             color: #fbbf24;
         }
         
-        .modal-content-container {
-            margin: 2% auto;
-            width: 95%;
-            max-width: 1000px;
-            height: 92vh;
+        .modal-image-container {
+            padding: 15px;
+            background: #f8fafc;
+            flex-grow: 1;
+            overflow-y: auto;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
         
-        #modalPdf {
+        .modal-image {
             max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        /* Tablet */
-        @media (min-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+                border-radius: 0;
             }
             
-            .header p {
-                font-size: 1.1rem;
+            .mobile-header {
+                padding: 12px 15px;
             }
             
-            .certificates-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-            
-            .certificate-pdf {
-                height: 180px;
-            }
-            
-            .certificate-icon {
-                font-size: 2.2rem;
-            }
-            
-            .certificate-title {
-                font-size: 1.5rem;
-            }
-        }
-        
-        /* Desktop */
-        @media (min-width: 1024px) {
-            .header h1 {
-                font-size: 2.8rem;
-            }
-            
-            .header p {
+            .header-title {
                 font-size: 1.2rem;
             }
             
-            .certificates-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 30px;
+            .header-subtitle {
+                font-size: 0.85rem;
             }
             
-            .certificate-pdf {
-                height: 200px;
-            }
-            
-            .certificate-icon {
-                font-size: 2.5rem;
+            .certificate-header {
+                padding: 12px 15px;
             }
             
             .certificate-title {
-                font-size: 1.6rem;
-            }
-            
-            .back-btn {
-                padding: 10px 20px;
                 font-size: 1rem;
             }
             
-            .modal-content-container {
-                margin: 2% auto;
-                width: 90%;
-                max-width: 1000px;
-                height: 90vh;
+            .certificate-issuer {
+                font-size: 0.8rem;
             }
             
-            .modal-header h3 {
+            .certificate-body {
+                padding: 12px 15px;
+            }
+            
+            .certificate-preview {
+                height: 160px;
+            }
+            
+            .info-item {
+                font-size: 0.8rem;
+            }
+            
+            .info-label {
+                font-size: 0.8rem;
+            }
+            
+            .info-text {
+                font-size: 0.8rem;
+            }
+            
+            .modal-image {
+                max-height: 75vh;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px;
+            }
+            
+            .mobile-header {
+                padding: 20px 25px;
+            }
+            
+            .header-title {
                 font-size: 1.5rem;
             }
             
-            .close-modal {
-                font-size: 2.5rem;
-                top: 15px;
-                right: 25px;
-            }
-        }
-        
-        /* Large Desktop */
-        @media (min-width: 1200px) {
-            .container {
-                padding: 0 20px;
-            }
-        }
-        
-        /* Very Small Devices */
-        @media (max-width: 375px) {
-            .header h1 {
-                font-size: 2rem;
+            .certificate-header {
+                padding: 20px 25px;
             }
             
             .certificate-title {
                 font-size: 1.3rem;
             }
             
-            .skills-tags {
-                gap: 4px;
+            .certificate-preview {
+                height: 220px;
             }
             
-            .skill-tag {
-                padding: 3px 8px;
-                font-size: 0.7rem;
+            .info-item {
+                font-size: 0.9rem;
+            }
+            
+            .info-label {
+                font-size: 0.9rem;
+            }
+            
+            .info-text {
+                font-size: 0.9rem;
             }
         }
         
-        /* Scrollbar styling for WebKit browsers */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .certificate-preview {
+                height: 250px;
+            }
+        }
+        
+        /* Scrollbar styling */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         ::-webkit-scrollbar-track {
@@ -469,74 +387,70 @@
         
         ::-webkit-scrollbar-thumb {
             background: #c5c5c5;
-            border-radius: 4px;
+            border-radius: 3px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8;
         }
+        
+        /* Smooth scroll for modal */
+        .modal-image-container {
+            scrollbar-width: thin;
+            scrollbar-color: #c5c5c5 #f1f1f1;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
             <a href="#" class="back-btn" onclick="window.location.reload(); return false;">
                 <i class="fas fa-arrow-left"></i> Beranda
             </a>
-            
-            <div class="header-content">
-                <h1><i class="fas fa-certificate"></i> Sertifikasi Keahlian</h1>
-                <p>Bukti kompetensi profesional dan pencapaian akademik dalam berbagai bidang keahlian</p>
+            <div>
+                <div class="header-title">Sertifikasi Keahlian</div>
+                <div class="header-subtitle">Bukti kompetensi profesional dan pencapaian akademik dalam berbagai bidang keahlian</div>
             </div>
         </div>
         
-        <div class="certificates-grid">
+        <!-- Certificates List -->
+        <div class="certificates-list">
             <!-- Certificate 1 -->
             <div class="certificate-card">
                 <div class="certificate-header">
                     <div class="certificate-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="certificate-title">AWS Certified Solutions Architect</h3>
-                    <div class="certificate-issuer">Amazon Web Services (AWS)</div>
+                    <div>
+                        <h3 class="certificate-title">AWS Certified Solutions Architect</h3>
+                        <div class="certificate-issuer">Amazon Web Services (AWS)</div>
+                    </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('Nvdia.png')">
+                    <div class="certificate-preview" onclick="openModal('Nvdia.png')">
                         <img src="Nvdia.png" alt="Certificate Preview" 
-                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-certificate\'></i><p>Gambar tidak ditemukan</p></div>'">
+                             onerror="this.parentElement.innerHTML='<div style=\"text-align:center; padding:20px; color:#94a3b8;\"><i class=\"fas fa-file-certificate\" style=\"font-size:2rem; margin-bottom:10px;\"></i><p>Gambar tidak ditemukan</p></div>'">
                     </div>
-                    <div class="certificate-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                    <div class="certificate-info">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-trophy"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Level:</span> Professional
+                            <div>
+                                <span class="info-label">Level:</span>
+                                <span class="info-text">Professional</span>
                             </div>
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-book"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Deskripsi:</span> Mendesain dan menerapkan solusi cloud yang scalable, highly available, dan fault tolerant di AWS.
+                            <div>
+                                <span class="info-label">Deskripsi:</span>
+                                <span class="info-text">Mendesain dan menerapkan solusi cloud yang scalable, highly available, dan fault tolerant di AWS.</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Cloud Architecture</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">DevOps</span>
-                        <span class="skill-tag">Security</span>
-                    </div>
-                    <button class="view-full-btn" onclick="openModal('Nvdia.png')">
-                        <i class="fas fa-expand"></i> Lihat Sertifikat
-                    </button>
-                </div>
-                <div class="certificate-footer">
-                    <div class="issue-date">Diterbitkan: Jan 2024</div>
-                    <div class="verification-badge">
-                        <i class="fas fa-check-circle"></i> Terverifikasi
                     </div>
                 </div>
             </div>
@@ -547,46 +461,35 @@
                     <div class="certificate-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="certificate-title">Google Data Analytics Professional</h3>
-                    <div class="certificate-issuer">Google Career Certificates</div>
+                    <div>
+                        <h3 class="certificate-title">Google Data Analytics Professional</h3>
+                        <div class="certificate-issuer">Google Career Certificates</div>
+                    </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
+                    <div class="certificate-preview" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
                         <img src="NVIDIA_Fundamentals of Deep Learning.png" alt="Certificate Preview"
-                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-certificate\'></i><p>Gambar tidak ditemukan</p></div>'">
+                             onerror="this.parentElement.innerHTML='<div style=\"text-align:center; padding:20px; color:#94a3b8;\"><i class=\"fas fa-file-certificate\" style=\"font-size:2rem; margin-bottom:10px;\"></i><p>Gambar tidak ditemukan</p></div>'">
                     </div>
-                    <div class="certificate-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                    <div class="certificate-info">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-trophy"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Level:</span> Intermediate
+                            <div>
+                                <span class="info-label">Level:</span>
+                                <span class="info-text">Intermediate</span>
                             </div>
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-book"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Deskripsi:</span> Analisis data menggunakan SQL, R, Tableau, dan spreadsheet untuk mengambil insight bisnis.
+                            <div>
+                                <span class="info-label">Deskripsi:</span>
+                                <span class="info-text">Analisis data menggunakan SQL, R, Tableau, dan spreadsheet untuk mengambil insight bisnis.</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">R Programming</span>
-                    </div>
-                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
-                        <i class="fas fa-expand"></i> Lihat Sertifikat
-                    </button>
-                </div>
-                <div class="certificate-footer">
-                    <div class="issue-date">Diterbitkan: Mar 2024</div>
-                    <div class="verification-badge">
-                        <i class="fas fa-check-circle"></i> Terverifikasi
                     </div>
                 </div>
             </div>
@@ -597,46 +500,35 @@
                     <div class="certificate-icon">
                         <i class="fas fa-lock"></i>
                     </div>
-                    <h3 class="certificate-title">Certified Information Security Manager</h3>
-                    <div class="certificate-issuer">ISACA</div>
+                    <div>
+                        <h3 class="certificate-title">Certified Information Security Manager</h3>
+                        <div class="certificate-issuer">ISACA</div>
+                    </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
+                    <div class="certificate-preview" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
                         <img src="NVIDIA_Fundamentals of Deep Learning.png" alt="Certificate Preview"
-                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-certificate\'></i><p>Gambar tidak ditemukan</p></div>'">
+                             onerror="this.parentElement.innerHTML='<div style=\"text-align:center; padding:20px; color:#94a3b8;\"><i class=\"fas fa-file-certificate\" style=\"font-size:2rem; margin-bottom:10px;\"></i><p>Gambar tidak ditemukan</p></div>'">
                     </div>
-                    <div class="certificate-details">
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                    <div class="certificate-info">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-trophy"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Level:</span> Advanced
+                            <div>
+                                <span class="info-label">Level:</span>
+                                <span class="info-text">Advanced</span>
                             </div>
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-icon">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fas fa-book"></i>
                             </div>
-                            <div class="detail-text">
-                                <span class="detail-label">Deskripsi:</span> Manajemen keamanan informasi, governance, risk management, dan compliance.
+                            <div>
+                                <span class="info-label">Deskripsi:</span>
+                                <span class="info-text">Manajemen keamanan informasi, governance, risk management, dan compliance.</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Cybersecurity</span>
-                        <span class="skill-tag">Risk Management</span>
-                        <span class="skill-tag">Compliance</span>
-                        <span class="skill-tag">Governance</span>
-                    </div>
-                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
-                        <i class="fas fa-expand"></i> Lihat Sertifikat
-                    </button>
-                </div>
-                <div class="certificate-footer">
-                    <div class="issue-date">Diterbitkan: Nov 2023</div>
-                    <div class="verification-badge">
-                        <i class="fas fa-check-circle"></i> Terverifikasi
                     </div>
                 </div>
             </div>
@@ -645,21 +537,23 @@
 
     <!-- Modal untuk tampilan penuh -->
     <div id="pdfModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <div class="modal-header">
-            <h3>Sertifikasi Keahlian</h3>
-        </div>
-        <div class="modal-content-container">
-            <img id="modalPdf" alt="Full Certificate">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Sertifikasi Keahlian</div>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-image-container">
+                <img id="modalImage" class="modal-image" alt="Full Certificate">
+            </div>
         </div>
     </div>
 
     <script>
-        function openModal(pngUrl) {
+        function openModal(imageUrl) {
             const modal = document.getElementById('pdfModal');
-            const modalPdf = document.getElementById('modalPdf');
-            modalPdf.src = pngUrl;
-            modal.style.display = 'block';
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageUrl;
+            modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
         
@@ -685,7 +579,7 @@
         });
         
         // Handle image load errors in modal
-        document.getElementById('modalPdf').onerror = function() {
+        document.getElementById('modalImage').onerror = function() {
             this.src = 'https://placehold.co/600x800/e2e8f0/64748b?text=Gambar+Tidak+Ditemukan';
             this.alt = 'Gambar tidak dapat dimuat';
         };
