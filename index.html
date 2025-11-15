@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; 
+                   script-src 'self' 'sha256-LDBBFIiS5hLhQe3qLzV31D5Hh/sF1f+yqYtC1v8g/iA='; 
+                   style-src 'self' 'sha256-91dK8X8yTOrLqF8H/1s+YtB5T/gT8qR5e+h8a/vI7dE=' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
+                   font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
+                   img-src 'self' https://placehold.co; 
+                   object-src 'none'; 
+                   frame-ancestors 'none';">
+
     <title>Rian Kia Mado - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer" />
+          
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* Base Styles */
         :root {
@@ -713,12 +730,7 @@
                 <div class="hero-text">
                     <h1>Hi, I'm <span>YL3R</span></h1>
                     <div class="tentang">
-                        <!-- <p>I am a recent graduate in Informatics Engineering from Satya Wacana Christian University,
-                           with a focus on Database Systems. I was actively involved in campus organizations, 
-                           including the University Student Senate (SMU), where I served as a member of the 
-                           Professional Skills division. During my studies, I also completed certification programs
-                           from Oracle Academy and Nvidia to strengthen my technical expertise.</p> -->
-                    </div>
+                        </div>
                     <div class="hero-btns">
                         <a href="#projects" class="btn primary">View My Work</a>
                         <a href="#contact" class="btn secondary">Contact Me</a>
@@ -801,38 +813,12 @@
                     <div class="project-img">
                         <img src="https://placehold.co/600x400/8b5cf6/white?text=Coming+Soon" alt="Coming Soon">
                     </div>
-                    <!-- <div class="project-content">
-                        <h3>Coming Soon</h3>
-                        <p>Interactive dashboard with real-time data visualization.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>D3.js</span>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projeck_CompViss.html" class="btn small primary">Live Demo</a>
-                            <a href="projeck_CompViss.html" class="btn small secondary">Source Code</a>
-                        </div>
-                    </div> -->
-                </div>
+                    </div>
                 <div class="project-card">
                     <div class="project-img">
                         <img src="https://placehold.co/600x400/10b981/white?text=Coming+Soon" alt="Coming Soon">
                     </div>
-                    <!-- <div class="project-content">
-                        <h3>Coming Soon</h3>
-                        <p>Mobile-first fitness tracking application.</p>
-                        <div class="project-tech">
-                            <span>React Native</span>
-                            <span>Firebase</span>
-                            <span>Redux</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projeck_CompViss.html" class="btn small primary">Live Demo</a>
-                            <a href="projeck_CompViss.html" class="btn small secondary">Source Code</a>
-                        </div>
-                    </div> -->
-                </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -853,8 +839,8 @@
                         <li><i class="fas fa-map-marker-alt"></i>Central Java Semarang, Indonesia</li>
                     </ul>
                     <div class="social-links">
-                        <a href="www.linkedin.com/in/priscianus-mikael-kia-mado-b880152b2" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/rian_kiamado/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/priscianus-mikael-kia-mado-b880152b2" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/rian_kiamado/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
