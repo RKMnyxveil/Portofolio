@@ -144,18 +144,29 @@
         }
         
         .certificate-preview {
+            /* Reset button styles */
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 0;
+            font: inherit;
+            color: inherit;
+            text-align: left;
+            
+            /* Original styles */
             width: 100%;
             height: 180px;
-            background: #f8fafc;
             border-radius: 10px;
             margin-bottom: 15px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
             cursor: pointer;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .certificate-preview:hover {
+            background: #f1f5f9;
         }
         
         .certificate-preview img {
@@ -164,9 +175,29 @@
             object-fit: contain;
             border: none;
         }
-        
-        .certificate-preview:hover {
-            background: #f1f5f9;
+
+        /* [BARU] CSS untuk menangani error gambar pratinjau */
+        .certificate-preview.image-error {
+            background: #f8fafc;
+            color: var(--text-gray);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        .certificate-preview.image-error img {
+            display: none; /* Sembunyikan gambar yang rusak */
+        }
+        .certificate-preview.image-error::after {
+            font-family: "Font Awesome 6 Free";
+            content: '\f091'; /* ikon fa-trophy */
+            font-weight: 900;
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .certificate-preview.image-error::before {
+            content: 'Gambar tidak ditemukan';
+            display: block;
         }
         
         .certificate-info {
@@ -209,8 +240,8 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.8); /* Sedikit lebih transparan */
+            backdrop-filter: blur(5px);
             padding: 20px;
             align-items: center;
             justify-content: center;
@@ -242,11 +273,18 @@
         }
         
         .close-modal {
+            /* [BARU] Reset style untuk <button> */
+            background: none;
+            border: none;
+            padding: 0;
+            
+            /* Style lama */
             color: white;
             font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s ease;
+            line-height: 1; /* Pastikan tinggi konsisten */
         }
         
         .close-modal:hover {
@@ -277,123 +315,43 @@
                 max-width: 100%;
                 border-radius: 0;
             }
-            
+            body {
+                padding: 0; /* Hapus padding body di HP */
+            }
             .mobile-header {
                 padding: 12px 15px;
             }
-            
-            .header-title {
-                font-size: 1.2rem;
-            }
-            
-            .header-subtitle {
-                font-size: 0.85rem;
-            }
-            
-            .certificate-header {
-                padding: 12px 15px;
-            }
-            
-            .certificate-title {
-                font-size: 1rem;
-            }
-            
-            .certificate-issuer {
-                font-size: 0.8rem;
-            }
-            
-            .certificate-body {
-                padding: 12px 15px;
-            }
-            
-            .certificate-preview {
-                height: 160px;
-            }
-            
-            .info-item {
-                font-size: 0.8rem;
-            }
-            
-            .info-label {
-                font-size: 0.8rem;
-            }
-            
-            .info-text {
-                font-size: 0.8rem;
-            }
-            
-            .modal-image {
-                max-height: 75vh;
-            }
+            .header-title { font-size: 1.2rem; }
+            .header-subtitle { font-size: 0.85rem; }
+            .certificate-header { padding: 12px 15px; }
+            .certificate-title { font-size: 1rem; }
+            .certificate-issuer { font-size: 0.8rem; }
+            .certificate-body { padding: 12px 15px; }
+            .certificate-preview { height: 160px; }
+            .info-item, .info-label, .info-text { font-size: 0.8rem; }
+            .modal-image { max-height: 75vh; }
         }
         
         @media (min-width: 768px) {
-            .container {
-                max-width: 500px;
-            }
-            
-            .mobile-header {
-                padding: 20px 25px;
-            }
-            
-            .header-title {
-                font-size: 1.5rem;
-            }
-            
-            .certificate-header {
-                padding: 20px 25px;
-            }
-            
-            .certificate-title {
-                font-size: 1.3rem;
-            }
-            
-            .certificate-preview {
-                height: 220px;
-            }
-            
-            .info-item {
-                font-size: 0.9rem;
-            }
-            
-            .info-label {
-                font-size: 0.9rem;
-            }
-            
-            .info-text {
-                font-size: 0.9rem;
-            }
+            .container { max-width: 500px; }
+            .mobile-header { padding: 20px 25px; }
+            .header-title { font-size: 1.5rem; }
+            .certificate-header { padding: 20px 25px; }
+            .certificate-title { font-size: 1.3rem; }
+            .certificate-preview { height: 220px; }
+            .info-item, .info-label, .info-text { font-size: 0.9rem; }
         }
         
         @media (min-width: 1024px) {
-            .container {
-                max-width: 600px;
-            }
-            
-            .certificate-preview {
-                height: 250px;
-            }
+            .container { max-width: 600px; }
+            .certificate-preview { height: 250px; }
         }
         
         /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #c5c5c5;
-            border-radius: 3px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
-        }
-        
-        /* Smooth scroll for modal */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c5c5c5; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         .modal-image-container {
             scrollbar-width: thin;
             scrollbar-color: #c5c5c5 #f1f1f1;
@@ -402,7 +360,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Mobile Header -->
         <div class="mobile-header">
             <a href="index.html" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Beranda
@@ -413,9 +370,7 @@
             </div>
         </div>
         
-        <!-- Certificates List -->
         <div class="certificates-list">
-            <!-- Certificate 1 -->
             <div class="certificate-card">
                 <div class="certificate-header">
                     <div class="certificate-icon">
@@ -427,24 +382,19 @@
                     </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-preview" onclick="openModal('https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg')">
-                        <img src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg" alt="Certificate Preview" 
-                             onerror="this.parentElement.innerHTML='<div style=&quot;text-align:center; padding:20px; color:#94a3b8;&quot;><i class=&quot;fas fa-trophy&quot; style=&quot;font-size:2rem; margin-bottom:10px;&quot;></i><p>Gambar tidak ditemukan</p></div>'">
-                    </div>
+                    <button class="certificate-preview" data-src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg">
+                        <img src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg" alt="Certificate Preview">
+                    </button>
                     <div class="certificate-info">
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
                             <div>
                                 <span class="info-label">Level:</span>
                                 <span class="info-text">Professional</span>
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-book"></i></div>
                             <div>
                                 <span class="info-label">Deskripsi:</span>
                                 <span class="info-text">Mendesain dan menerapkan solusi cloud yang scalable, highly available, dan fault tolerant di AWS.</span>
@@ -454,36 +404,28 @@
                 </div>
             </div>
             
-            <!-- Certificate 2 -->
             <div class="certificate-card">
                 <div class="certificate-header">
-                    <div class="certificate-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                    <div class="certificate-icon"><i class="fas fa-chart-line"></i></div>
                     <div>
                         <h3 class="certificate-title">Google Data Analytics Professional</h3>
                         <div class="certificate-issuer">Google Career Certificates</div>
                     </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-preview" onclick="openModal('https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&amp;v=beta&amp;t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k')">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&amp;v=beta&amp;t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k" alt="Certificate Preview"
-                             onerror="this.parentElement.innerHTML='<div style=&quot;text-align:center; padding:20px; color:#94a3b8;&quot;><i class=&quot;fas fa-trophy&quot; style=&quot;font-size:2rem; margin-bottom:10px;&quot;></i><p>Gambar tidak ditemukan</p></div>'">
-                    </div>
+                    <button class="certificate-preview" data-src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k" alt="Certificate Preview">
+                    </button>
                     <div class="certificate-info">
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
                             <div>
                                 <span class="info-label">Level:</span>
                                 <span class="info-text">Intermediate</span>
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-book"></i></div>
                             <div>
                                 <span class="info-label">Deskripsi:</span>
                                 <span class="info-text">Analisis data menggunakan SQL, R, Tableau, dan spreadsheet untuk mengambil insight bisnis.</span>
@@ -493,36 +435,28 @@
                 </div>
             </div>
             
-            <!-- Certificate 3 -->
             <div class="certificate-card">
                 <div class="certificate-header">
-                    <div class="certificate-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
+                    <div class="certificate-icon"><i class="fas fa-lock"></i></div>
                     <div>
                         <h3 class="certificate-title">Certified Information Security Manager</h3>
                         <div class="certificate-issuer">ISACA</div>
                     </div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-preview" onclick="openModal('https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg')">
-                        <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg" alt="Certificate Preview"
-                             onerror="this.parentElement.innerHTML='<div style=&quot;text-align:center; padding:20px; color:#94a3b8;&quot;><i class=&quot;fas fa-trophy&quot; style=&quot;font-size:2rem; margin-bottom:10px;&quot;></i><p>Gambar tidak ditemukan</p></div>'">
-                    </div>
+                    <button class="certificate-preview" data-src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg">
+                        <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg" alt="Certificate Preview">
+                    </button>
                     <div class="certificate-info">
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
                             <div>
                                 <span class="info-label">Level:</span>
                                 <span class="info-text">Advanced</span>
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
+                            <div class="info-icon"><i class="fas fa-book"></i></div>
                             <div>
                                 <span class="info-label">Deskripsi:</span>
                                 <span class="info-text">Manajemen keamanan informasi, governance, risk management, dan compliance.</span>
@@ -534,12 +468,11 @@
         </div>
     </div>
 
-    <!-- Modal untuk tampilan penuh -->
-    <div id="pdfModal" class="modal">
+    <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">Sertifikasi Keahlian</div>
-                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <div id="modal-title" class="modal-title">Sertifikasi Keahlian</div>
+                <button class="close-modal" aria-label="Tutup">&times;</button>
             </div>
             <div class="modal-image-container">
                 <img id="modalImage" class="modal-image" alt="Full Certificate">
@@ -548,40 +481,72 @@
     </div>
 
     <script>
-        function openModal(imageUrl) {
+        document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('pdfModal');
             const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageUrl;
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('pdfModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('pdfModal');
-            if (event.target === modal) {
-                closeModal();
+            const closeModalButton = document.querySelector('.close-modal');
+            const previewButtons = document.querySelectorAll('.certificate-preview');
+            const previewImages = document.querySelectorAll('.certificate-preview img');
+            
+            let focusedElementBeforeModal;
+
+            // Fungsi untuk membuka modal
+            function openModal(imageUrl) {
+                focusedElementBeforeModal = document.activeElement; // Simpan elemen yang sedang fokus
+                modalImage.src = imageUrl;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                closeModalButton.focus(); // Pindahkan fokus ke tombol close di modal
             }
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
+            
+            // Fungsi untuk menutup modal
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                if (focusedElementBeforeModal) {
+                    focusedElementBeforeModal.focus(); // Kembalikan fokus ke tombol pratinjau
+                }
             }
+            
+            // Tambahkan event listener untuk setiap tombol pratinjau
+            previewButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const imageUrl = button.dataset.src; // Ambil URL dari data-src
+                    openModal(imageUrl);
+                });
+            });
+
+            // Tambahkan event listener untuk tombol close
+            closeModalButton.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+            
+            // [BARU] Handle image load errors untuk pratinjau
+            previewImages.forEach(img => {
+                img.onerror = function() {
+                    // Ganti 'this' (img) menjadi 'this.parentElement' (button)
+                    this.parentElement.classList.add('image-error');
+                }
+            });
+
+            // Handle image load errors di dalam modal
+            modalImage.onerror = function() {
+                this.src = 'https://placehold.co/600x800/e2e8f0/64748b?text=Gambar+Tidak+Ditemukan';
+                this.alt = 'Gambar tidak dapat dimuat';
+            };
         });
-        
-        // Handle image load errors in modal
-        document.getElementById('modalImage').onerror = function() {
-            this.src = 'https://placehold.co/600x800/e2e8f0/64748b?text=Gambar+Tidak+Ditemukan';
-            this.alt = 'Gambar tidak dapat dimuat';
-        };
     </script>
 </body>
 </html>
