@@ -10,57 +10,48 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         :root {
-            --primary-bg: #2563eb;
-            --secondary-bg: #60a5fa;
-            --accent-bg: #7c3aed;
+            --primary-bg: #2563eb; /* Biru untuk header */
+            --card-title-bg: #7c3aed; /* Ungu untuk kartu judul */
             --card-bg: #ffffff;
+            --page-bg: #f3f4f6; /* Latar belakang halaman abu-abu muda */
             --text-white: #ffffff;
             --text-dark: #1e293b;
             --text-gray: #64748b;
             --border-color: #e2e8f0;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --radius: 16px;
+            --radius: 12px;
             --transition: all 0.2s ease;
         }
         
         body {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            min-height: 100vh;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--page-bg);
+            color: var(--text-dark);
             font-size: 16px;
+            /* Hapus semua style 'display: flex' dari body */
         }
         
-        .container {
-            max-width: 420px;
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        /* Mobile Header */
-        .mobile-header {
+        /* [BARU] Header Utama */
+        .main-header {
             background: var(--primary-bg);
             color: var(--text-white);
-            padding: 15px 20px;
-            position: relative;
+            padding: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .back-btn {
             background: rgba(255, 255, 255, 0.2);
             color: var(--text-white);
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
@@ -69,6 +60,7 @@
             align-items: center;
             gap: 6px;
             transition: var(--transition);
+            flex-shrink: 0;
         }
         
         .back-btn:hover {
@@ -76,7 +68,7 @@
         }
         
         .header-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             line-height: 1.3;
         }
@@ -84,161 +76,126 @@
         .header-subtitle {
             font-size: 0.9rem;
             opacity: 0.9;
-            margin-top: 5px;
+            margin-top: 4px;
             line-height: 1.4;
         }
         
-        /* [DIUBAH] Menggunakan Grid Layout */
-        .certificates-list {
-            padding: 15px;
-            background: #f8fafc;
-            
-            /* Ubah ke Grid */
+        /* [BARU] Area Konten Utama */
+        .content-area {
+            padding: 20px;
+        }
+
+        /* [BARU] Grid untuk kartu sertifikasi */
+        .certification-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Default 1-kolom */
-            gap: 15px; /* Jarak antar kartu */
+            grid-template-columns: 1fr; /* 1-kolom di HP (default) */
+            gap: 20px;
         }
-        
-        /* [DIUBAH] Kartu untuk Grid */
-        .certificate-card {
-            background: var(--card-bg);
+
+        /* [BARU] Kartu Judul (Ungu) */
+        .title-card {
+            padding: 20px;
             border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            
-            /* [DIHAPUS] Properti carousel seperti width: 85%, flex-shrink, dll. */
-            width: 100%; /* Biarkan grid yang mengatur lebar */
-        }
-        
-        .certificate-card:last-child {
-            /* Kosong */
-        }
-        
-        .certificate-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .certificate-header {
-            background: linear-gradient(120deg, #7c3aed, #9333ea);
-            color: white;
-            padding: 16px 20px;
+            color: var(--text-white);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            margin-bottom: 15px; /* Jarak ke kartu pratinjau */
+            box-shadow: var(--shadow);
         }
-        
-        .certificate-icon {
-            font-size: 1.5rem;
-            color: #fbbf24;
+
+        .title-card i {
+            font-size: 1.75rem;
+            min-width: 28px;
+            text-align: center;
         }
-        
-        .certificate-title {
-            font-size: 1.1rem;
+
+        .title-card h3 {
+            font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 4px;
         }
-        
-        .certificate-issuer {
-            font-size: 0.85rem;
+
+        .title-card span {
+            font-size: 0.9rem;
             opacity: 0.9;
-            font-weight: 500;
+            display: block;
+            margin-top: 4px;
         }
-        
-        .certificate-body {
-            padding: 15px 20px;
+
+        /* [BARU] Warna khusus untuk setiap kartu judul */
+        .aws-card {
+            background: linear-gradient(120deg, #7c3aed, #9333ea);
         }
-        
-        .certificate-preview {
+        .google-card {
+            background: linear-gradient(120deg, #3b82f6, #2563eb);
+        }
+        .isaca-card {
+            background: linear-gradient(120deg, #10b981, #059669);
+        }
+
+        /* [DIUBAH] Kartu Pratinjau (Putih) */
+        .preview-card {
             /* Reset button styles */
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            padding: 0;
+            background: var(--card-bg);
+            border: none;
+            padding: 15px;
             font: inherit;
             color: inherit;
             text-align: left;
             
-            /* Original styles */
+            /* Styling */
             width: 100%;
-            height: 180px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             cursor: pointer;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: var(--transition);
         }
         
-        .certificate-preview:hover {
-            background: #f1f5f9;
+        .preview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .certificate-preview img {
+        .preview-card img {
             width: 100%;
-            height: 100%;
+            height: auto; /* Tinggi otomatis */
             object-fit: contain;
-            border: none;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
         }
 
-        .certificate-preview.image-error {
+        /* [DIUBAH] Penanganan error gambar pratinjau */
+        .preview-card.image-error {
             background: #f8fafc;
             color: var(--text-gray);
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             font-size: 0.9rem;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed var(--border-color);
         }
-        .certificate-preview.image-error img {
-            display: none;
+        .preview-card.image-error img {
+            display: none; /* Sembunyikan gambar yang rusak */
         }
-        .certificate-preview.image-error::after {
+        .preview-card.image-error::before {
             font-family: "Font Awesome 6 Free";
-            content: '\f091';
+            content: '\f091'; /* ikon fa-trophy */
             font-weight: 900;
             font-size: 2rem;
             display: block;
             margin-bottom: 10px;
         }
-        .certificate-preview.image-error::before {
+        .preview-card.image-error::after {
             content: 'Gambar tidak ditemukan';
             display: block;
         }
         
-        .certificate-info {
-            margin-bottom: 12px;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            gap: 8px;
-        }
-        
-        .info-icon {
-            color: #4f46e5;
-            font-size: 0.9rem;
-            min-width: 16px;
-            margin-top: 2px;
-        }
-        
-        .info-label {
-            font-weight: 600;
-            color: var(--text-dark);
-            font-size: 0.85rem;
-            margin-right: 4px;
-        }
-        
-        .info-text {
-            color: var(--text-gray);
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-        
-        /* Modal Styling */
+        /* Modal Styling (TIDAK BERUBAH) */
         .modal {
             display: none;
             position: fixed;
@@ -313,53 +270,39 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .container {
-                max-width: 100%;
-                border-radius: 0;
-            }
-            body {
-                padding: 0;
-            }
-            .mobile-header {
-                padding: 12px 15px;
-            }
-            .header-title { font-size: 1.2rem; }
-            .header-subtitle { font-size: 0.85rem; }
-            .certificate-header { padding: 12px 15px; }
-            .certificate-title { font-size: 1rem; }
-            .certificate-issuer { font-size: 0.8rem; }
-            .certificate-body { padding: 12px 15px; }
-            .certificate-preview { height: 160px; }
-            .info-item, .info-label, .info-text { font-size: 0.8rem; }
-            .modal-image { max-height: 75vh; }
-        }
+        /* [BARU] Media Queries untuk Responsif */
         
+        /* Tablet: 2-kolom */
         @media (min-width: 768px) {
-            .container { max-width: 500px; }
-            .mobile-header { padding: 20px 25px; }
-            .header-title { font-size: 1.5rem; }
-            .certificate-header { padding: 20px 25px; }
-            .certificate-title { font-size: 1.3rem; }
-            .certificate-preview { height: 220px; }
-            .info-item, .info-label, .info-text { font-size: 0.9rem; }
-
-            /* [BARU] Jadikan 2-kolom di layar yang lebih besar */
-            .certificates-list {
+            .content-area {
+                padding: 30px;
+            }
+            .certification-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .main-header {
+                padding: 20px 30px;
             }
         }
         
+        /* Desktop: 3-kolom */
         @media (min-width: 1024px) {
-            .container { max-width: 600px; }
-            .certificate-preview { height: 250px; }
+            .content-area {
+                padding: 40px;
+            }
+            .certification-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .main-header {
+                padding: 20px 40px;
+            }
         }
-        
-        /* Scrollbar styling */
+
+        /* Scrollbar styling (TIDAK BERUBAH) */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #c5c5cc; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #c5c5c5; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
         .modal-image-container {
             scrollbar-width: thin;
@@ -369,114 +312,60 @@
 </head>
 <body>
     
-    <div class="container">
-        <div class="mobile-header">
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Beranda
-            </a>
-            <div>
-                <div class="header-title">Sertifikasi Keahlian</div>
-                <div class="header-subtitle">Bukti kompetensi profesional dan pencapaian akademik dalam berbagai bidang keahlian</div>
-            </div>
+    <header class="main-header">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Beranda
+        </a>
+        <div class="header-text">
+            <h1 class="header-title">Sertifikasi Keahlian</h1>
+            <p class="header-subtitle">Bukti kompetensi profesional dan pencapaian akademik dalam berbagai bidang keahlian</p>
         </div>
-        
-        <div class="certificates-list">
-            <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div>
-                        <h3 class="certificate-title">AWS Certified Solutions Architect</h3>
-                        <div class="certificate-issuer">Amazon Web Services (AWS)</div>
-                    </div>
-                </div>
-                <div class="certificate-body">
-                    <button class="certificate-preview" data-src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg">
-                        <img src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg" alt="Certificate Preview">
-                    </button>
-                    <div class="certificate-info">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
-                            <div>
-                                <span class="info-label">Level:</span>
-                                <span class="info-text">Professional</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-book"></i></div>
-                            <div>
-                                <span class="info-label">Deskripsi:</span>
-                                <span class="info-text">Mendesain dan menerapkan solusi cloud yang scalable, highly available, dan fault tolerant di AWS.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </header>
+
+    <main class="content-area">
+        <div class="certification-grid">
             
-            <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="certification-column">
+                <div class="title-card aws-card">
+                    <i class="fas fa-laptop-code"></i>
                     <div>
-                        <h3 class="certificate-title">Google Data Analytics Professional</h3>
-                        <div class="certificate-issuer">Google Career Certificates</div>
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <span>Amazon Web Services (AWS)</span>
                     </div>
                 </div>
-                <div class="certificate-body">
-                    <button class="certificate-preview" data-src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k" alt="Certificate Preview">
-                    </button>
-                    <div class="certificate-info">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
-                            <div>
-                                <span class="info-label">Level:</span>
-                                <span class="info-text">Intermediate</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-book"></i></div>
-                            <div>
-                                <span class="info-label">Deskripsi:</span>
-                                <span class="info-text">Analisis data menggunakan SQL, R, Tableau, dan spreadsheet untuk mengambil insight bisnis.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="preview-card" data-src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg">
+                    <img src="https://www.etrainindia.com/wp-content/uploads/2024/07/AWS-Certified-Solutions-Architect-Professional-certificate-1.jpg" alt="AWS Certificate Preview">
+                </button>
             </div>
-            
-            <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-icon"><i class="fas fa-lock"></i></div>
+
+            <div class="certification-column">
+                <div class="title-card google-card">
+                    <i class="fas fa-chart-line"></i>
                     <div>
-                        <h3 class="certificate-title">Certified Information Security Manager</h3>
-                        <div class="certificate-issuer">ISACA</div>
+                        <h3>Google Data Analytics Professional</h3>
+                        <span>Google Career Certificates</span>
                     </div>
                 </div>
-                <div class="certificate-body">
-                    <button class="certificate-preview" data-src="https"zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg"">
-                        <img src="https"zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg"" alt="Certificate Preview">
-                    </button>
-                    <div class="certificate-info">
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-trophy"></i></div>
-                            <div>
-                                <span class="info-label">Level:</span>
-                                <span class="info-text">Advanced</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="fas fa-book"></i></div>
-                            <div>
-                                <span class="info-label">Deskripsi:</span>
-                                <span class="info-text">Manajemen keamanan informasi, governance, risk management, dan compliance.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="preview-card" data-src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E22AQG9PJV6gi-Vgw/feedshare-shrink_800/feedshare-shrink_800/0/1726906130370?e=2147483647&v=beta&t=vhtlblpmeMJvyESLNjFSSbx1uDJt-38_nNehMzNhr6k" alt="Google Certificate Preview">
+                </button>
             </div>
-        </div>
-    </div>
+
+            <div class="certification-column">
+                <div class="title-card isaca-card">
+                    <i class="fas fa-lock"></i>
+                    <div>
+                        <h3>Certified Information Security Manager</h3>
+                        <span>ISACA</span>
+                    </div>
+                </div>
+                <button class="preview-card" data-src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg">
+                    <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/wp-content/uploads/2022/07/14133803/CISM-Certificate.jpg" alt="CISM Certificate Preview">
+                </button>
+            </div>
+
+            </div>
+    </main>
 
     <div id="pdfModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
@@ -495,8 +384,10 @@
             const modal = document.getElementById('pdfModal');
             const modalImage = document.getElementById('modalImage');
             const closeModalButton = document.querySelector('.close-modal');
-            const previewButtons = document.querySelectorAll('.certificate-preview');
-            const previewImages = document.querySelectorAll('.certificate-preview img');
+            
+            // [DIUBAH] Target selector baru
+            const previewButtons = document.querySelectorAll('.preview-card'); 
+            const previewImages = document.querySelectorAll('.preview-card img');
             
             let focusedElementBeforeModal;
 
@@ -539,6 +430,7 @@
             
             previewImages.forEach(img => {
                 img.onerror = function() {
+                    // [DIUBAH] Target selector baru
                     this.parentElement.classList.add('image-error');
                 }
             });
