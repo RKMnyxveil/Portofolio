@@ -109,7 +109,7 @@
             padding: 30px;
         }
         
-        .certificate-image {
+        .certificate-pdf {
             width: 100%;
             height: 200px;
             background: #f8fafc;
@@ -124,24 +124,23 @@
             justify-content: center;
         }
         
-        .certificate-image img {
+        .certificate-pdf embed {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            border: none;
         }
         
-        .certificate-image:hover img {
-            transform: scale(1.05);
+        .certificate-pdf:hover {
+            background: #f1f5f9;
         }
         
-        .certificate-image-placeholder {
+        .pdf-placeholder {
             color: #94a3b8;
             text-align: center;
             padding: 20px;
         }
         
-        .certificate-image-placeholder i {
+        .pdf-placeholder i {
             font-size: 3rem;
             margin-bottom: 10px;
             display: block;
@@ -253,12 +252,13 @@
         }
         
         .modal-content {
-            margin: 5% auto;
+            margin: 2% auto;
             display: block;
-            width: 80%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 1000px;
             border-radius: 12px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            height: 90vh;
         }
         
         .modal-header {
@@ -301,12 +301,13 @@
             
             .modal-content {
                 width: 95%;
-                margin: 10% auto;
+                height: 85vh;
+                margin: 5% auto;
             }
         }
         
         @media (max-height: 700px) {
-            .certificate-image {
+            .certificate-pdf {
                 height: 150px;
             }
         }
@@ -330,8 +331,9 @@
                     <div class="certificate-issuer">Amazon Web Services (AWS)</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-image" onclick="openModal('https://drive.google.com/file/d/1Ut9bZ1KkTqJ343okPPBEYez_GKNL6vj5/view?usp=drive_link')">
-                        <img src="https://drive.google.com/file/d/1Ut9bZ1KkTqJ343okPPBEYez_GKNL6vj5/view?usp=drive_link" alt="Sertifikasi AWS">
+                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
+                        <embed src="NVIDIA_Fundamentals of Deep Learning.pdf" type="application/pdf" 
+                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -357,7 +359,7 @@
                         <span class="skill-tag">DevOps</span>
                         <span class="skill-tag">Security</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('https://placehold.co/800x600/4f46e5/white?text=AWS+Certification')">
+                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -379,8 +381,9 @@
                     <div class="certificate-issuer">Google Career Certificates</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-image" onclick="openModal('https://placehold.co/800x600/10b981/white?text=Google+Data+Analytics')">
-                        <img src="https://placehold.co/400x200/10b981/white?text=Google+Data+Analytics" alt="Sertifikasi Google Data Analytics">
+                    <div class="certificate-pdf" onclick="openModal('google-data-analytics.pdf')">
+                        <embed src="google-data-analytics.pdf" type="application/pdf"
+                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -406,7 +409,7 @@
                         <span class="skill-tag">Tableau</span>
                         <span class="skill-tag">R Programming</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('https://placehold.co/800x600/10b981/white?text=Google+Data+Analytics')">
+                    <button class="view-full-btn" onclick="openModal('google-data-analytics.pdf')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -428,8 +431,9 @@
                     <div class="certificate-issuer">ISACA</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-image" onclick="openModal('https://placehold.co/800x600/ef4444/white?text=CISM+Certification')">
-                        <img src="https://placehold.co/400x200/ef4444/white?text=CISM+Certification" alt="Sertifikasi CISM">
+                    <div class="certificate-pdf" onclick="openModal('cism-certification.pdf')">
+                        <embed src="cism-certification.pdf" type="application/pdf"
+                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -455,7 +459,7 @@
                         <span class="skill-tag">Compliance</span>
                         <span class="skill-tag">Governance</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('https://placehold.co/800x600/ef4444/white?text=CISM+Certification')">
+                    <button class="view-full-btn" onclick="openModal('cism-certification.pdf')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -470,32 +474,32 @@
     </div>
 
     <!-- Modal untuk tampilan penuh -->
-    <div id="imageModal" class="modal">
+    <div id="pdfModal" class="modal">
         <span class="close-modal" onclick="closeModal()">&times;</span>
         <div class="modal-header">
             <h3 id="modalTitle">Sertifikasi Keahlian</h3>
         </div>
-        <img class="modal-content" id="modalImage">
+        <embed class="modal-content" id="modalPdf" type="application/pdf">
     </div>
 
     <script>
-        function openModal(imageUrl) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = imageUrl;
+        function openModal(pdfUrl) {
+            const modal = document.getElementById('pdfModal');
+            const modalPdf = document.getElementById('modalPdf');
+            modalPdf.src = pdfUrl;
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
         
         function closeModal() {
-            const modal = document.getElementById('imageModal');
+            const modal = document.getElementById('pdfModal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
         
-        // Close modal when clicking outside the image
+        // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
+            const modal = document.getElementById('pdfModal');
             if (event.target === modal) {
                 closeModal();
             }
