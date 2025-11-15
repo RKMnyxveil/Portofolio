@@ -1,126 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Buka File PDF Langsung</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f5f7ff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .status {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    #pdf-viewer {
-      width: 100%;
-      max-width: 900px;
-      height: 80vh;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: white;
-    }
-    .error {
-      color: #e53e3e;
-      background: #fff5f5;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Buka PDF dari Google Drive</title>
+
+<style>
+  body {
+    margin: 0; padding: 20px;
+    font-family: Arial;
+    background: #f5f7ff;
+    display: flex; flex-direction: column;
+    align-items: center;
+  }
+  #pdf-viewer {
+    width: 100%;
+    max-width: 900px;
+    height: 80vh;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+  }
+</style>
+
 </head>
 <body>
-  <h1>📄 PDF Viewer - Buka File PDF Langsung</h1>
-  
-  <div class="status" id="status">
-    <p>Menunggu file PDF...</p>
-  </div>
 
-  <embed id="pdf-viewer" type="application/pdf" />
+<h1>📄 PDF Viewer dari Google Drive</h1>
 
-  <script>
-    // Fungsi untuk menangani file yang dilewatkan ke halaman
-    function handleFileFromFileInput(file) {
-      const statusDiv = document.getElementById('status');
-      const pdfViewer = document.getElementById('pdf-viewer');
+<div id="status">Memuat PDF...</div>
 
-      if (!file) {
-        statusDiv.innerHTML = '<p>❌ Tidak ada file yang dipilih.</p>';
-        return;
-      }
+<embed id="pdf-viewer" type="application/pdf">
 
-      if (file.type !== 'application/pdf') {
-        statusDiv.innerHTML = '<p>❌ File yang dipilih bukan PDF.</p>';
-        pdfViewer.style.display = 'none';
-        return;
-      }
+<script>
+  // MASUKKAN LINK PDF GOOGLE DRIVE DI SINI
+  const pdfUrl = "https://drive.google.com/file/d/1Ut9bZ1KkTqJ343okPPBEYez_GKNL6vj5/view?usp=drive_link";
 
-      try {
-        const fileUrl = URL.createObjectURL(file);
-        pdfViewer.src = fileUrl;
-        pdfViewer.style.display = 'block';
-        statusDiv.innerHTML = `<p>✅ Menampilkan: <strong>${file.name}</strong> (${(file.size / 1024).toFixed(1)} KB)</p>`;
-      } catch (error) {
-        statusDiv.innerHTML = '<p>❌ Gagal memuat file PDF.</p>';
-        pdfViewer.style.display = 'none';
-        console.error('Error loading PDF:', error);
-      }
-    }
+  // Tampilkan PDF
+  const viewer = document.getElementById("pdf-viewer");
+  const statusDiv = document.getElementById("status");
 
-    // Coba membaca file dari URL fragment (opsional, untuk integrasi lanjutan)
-    // Tapi karena kita di lingkungan file://, cara utama adalah drag & drop atau file input otomatis
+  try {
+    viewer.src = pdfUrl;
+    statusDiv.innerHTML = "<p>✅ PDF berhasil dimuat dari Google Drive.</p>";
+  } catch (e) {
+    statusDiv.innerHTML = "<p>❌ Gagal memuat PDF.</p>";
+  }
+</script>
 
-    // Buat input file tersembunyi
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = '.pdf';
-    fileInput.style.display = 'none';
-    fileInput.multiple = false;
-    fileInput.onchange = (e) => {
-      handleFileFromFileInput(e.target.files[0]);
-    };
-    document.body.appendChild(fileInput);
-
-    // Trigger file selection secara otomatis saat halaman dimuat
-    window.addEventListener('load', () => {
-      // Tunda sedikit agar halaman benar-benar siap
-      setTimeout(() => {
-        fileInput.click();
-      }, 500);
-    });
-
-    // Juga dukung drag & drop ke seluruh halaman
-    document.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-
-    document.addEventListener('drop', (e) => {
-      e.preventDefault();
-      const file = e.dataTransfer.files[0];
-      handleFileFromFileInput(file);
-    });
-  </script>
 </body>
 </html>
-
