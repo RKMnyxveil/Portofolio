@@ -107,24 +107,22 @@
             position: relative;
         }
 
-        /* [DIUBAH] Style untuk logo dan nama agar sejajar */
+        /* [PERBAIKAN] Style untuk logo dan nama agar sejajar */
         .logo a {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
             transition: all 0.3s ease;
-
-            /* [BARU] Tambahkan 3 baris ini */
             display: flex;
             align-items: center;
             gap: 10px; /* Jarak antara logo dan nama */
         }
         
-        /* [BARU] Style untuk gambar logo Anda */
+        /* [BARU] Style untuk gambar logo */
         .logo-img {
-            height: 30px;  /* Sesuaikan tinggi logo Anda di sini */
-            width: auto;   /* Lebar akan menyesuaikan otomatis */
-            border-radius: 50%; /* Opsional: Membuat logo bundar. Hapus jika tidak perlu. */
+            height: 30px;  /* Sesuaikan tinggi logo */
+            width: auto;   /* Lebar otomatis */
+            border-radius: 50%; /* Membuat logo bundar */
         }
 
         .nav {
@@ -196,13 +194,13 @@
         }
 
         /* Hero */
-  .hero {
-    /* [DIUBAH] Ganti nilai padding di baris ini */
-    padding: 120px 0 80px;
-    background: var(--hero-bg);
-    position: relative;
-    overflow: hidden;
-}
+        .hero {
+            /* [PERBAIKAN] Padding diubah agar tidak full screen */
+            padding: 120px 0 80px;
+            background: var(--hero-bg);
+            position: relative;
+            overflow: hidden;
+        }
 
         .theme-toggle {
             margin-left: 20px;
@@ -380,6 +378,10 @@
             letter-spacing: 1px;
         }
 
+        /* [PERBAIKAN] Garis bawah di "About Me" sudah dihapus.
+          Kode .skill-category h3::after { ... } telah dihilangkan.
+        */
+
         .skill-category ul {
             list-style: none;
             padding: 0;
@@ -522,9 +524,14 @@
             color: var(--text);
         }
 
+        /* [PERBAIKAN] Mengubah .contact-content menjadi 2 kolom */
         .contact-content {
             display: flex;
             gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1; /* Mengambil 50% ruang */
         }
 
         .contact-info h3 {
@@ -643,9 +650,10 @@
                 height: 280px;
             }
 
+            /* [PERBAIKAN] Mengubah layout kontak di HP */
             .contact-content {
                 flex-direction: column;
-                gap: 30px;
+                gap: 40px; /* Jarak antara info dan formulir */
             }
 
             .social-links {
@@ -698,75 +706,104 @@
         .tentang{
             text-align: justify;
         }
-/* [Opsi 1: Animasi Efek Mengetik - Diperbarui]
-   Gantikan kode animasi sebelumnya dengan ini.
---------------------------------------------------- */
 
-/* 1. Kontainer untuk "Hi, I'm YL3R" - sekarang sejajar */
-.hero-content h1 {
-    display: flex; /* Mengatur item agar sejajar */
-    align-items: baseline; /* Menjaga teks dasar sejajar */
-    opacity: 0; /* Mulai tak terlihat */
-    animation: slideUp 0.6s 0.5s ease-out forwards; /* 0.5s delay */
-}
+        /* [PERBAIKAN] Animasi Teks Mengetik */
+        .hero-content h1 {
+            display: flex; 
+            align-items: baseline; 
+            opacity: 0; 
+            animation: slideUp 0.6s 0.5s ease-out forwards; 
+        }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* 2. Persiapan "YL3R" untuk mengetik dan berulang */
-.hero-content h1 span {
-    display: inline-block; /* Diperlukan agar 'width' berfungsi */
-    overflow: hidden;      /* Menyembunyikan teks yang belum "diketik" */
-    white-space: nowrap;  /* Menjaga teks di satu baris */
-    width: 0;             /* Mulai tanpa lebar */
-    border-right: 4px solid var(--accent); /* Kursor/caret */
-    
-    /* Animasi: 
-       1. 'typing': durasi 1.5s, 4 langkah (Y-L-3-R), delay 1.2s, berulang terus
-       2. 'blink-caret': berkedip selamanya setelah 1.2s
-       3. 'erase': untuk menghapus teks, durasi 1.0s, 4 langkah, delay 4.2s, berulang terus
-    */
-    animation: 
-        typing 1.5s steps(4) 1.2s forwards, /* Mengetik YL3R */
-        blink-caret .75s step-end infinite 1.2s, /* Kursor berkedip */
-        erase 1.0s steps(4) 4.2s forwards infinite alternate; /* Menghapus dan berulang */
-}
+        .hero-content h1 span {
+            display: inline-block; 
+            overflow: hidden;      
+            white-space: nowrap;  
+            width: 0;             
+            border-right: 4px solid var(--accent); 
+            animation: 
+                typing 1.5s steps(4) 1.2s forwards, 
+                blink-caret .75s step-end infinite 1.2s,
+                erase 1.0s steps(4) 4.2s forwards infinite alternate; 
+        }
 
-/* 3. Keyframe untuk animasi 'typing' (mengubah lebar) */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 4.1ch; } /* 4.1ch = 4 karakter (Y L 3 R) */
-}
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 4.1ch; } 
+        }
 
-/* 4. Keyframe untuk 'blink-caret' (kursor berkedip) */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: var(--accent); }
-}
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
 
-/* 5. Keyframe baru untuk 'erase' (mengurangi lebar) */
-@keyframes erase {
-    from { width: 4.1ch; }
-    to { width: 0; }
-}
+        @keyframes erase {
+            from { width: 4.1ch; }
+            to { width: 0; }
+        }
 
-/* 6. Sedikit penyesuaian untuk tombol di bawahnya */
-.hero-btns {
-    opacity: 0;
-    /* Muncul setelah animasi mengetik pertama selesai, lalu tetap terlihat */
-    animation: slideUp 0.6s 2.7s ease-out forwards; 
-    /* Durasi total 1.5s (typing) + 1.0s (erase) + delay = 2.5s.
-       Tombol muncul di 2.7s untuk sedikit buffer.
-       Karena animasi berulang, tombol tidak akan menghilang lagi. */
-}
+        .hero-btns {
+            opacity: 0;
+            animation: slideUp 0.6s 2.7s ease-out forwards; 
+        }
+
+        /* [BARU] Style untuk Formulir Kontak */
+        .contact-form {
+            flex: 1; /* Mengambil 50% ruang */
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            background: var(--background); 
+            color: var(--text); 
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical; 
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -778,6 +815,7 @@
                     <span>Rian Kia Mado</span>
                 </a>
             </div>
+            
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#home">Home</a></li>
@@ -909,10 +947,13 @@
                 <h2>Contact</h2>
                 <div class="divider"></div>
             </div>
+            
             <div class="contact-content">
+
                 <div class="contact-info">
-                    <h3>Beta Tester</h3>
-                    <p>Ujicoba web</p>
+                    <h3>Hubungi Saya</h3>
+                    <p>Saya selalu terbuka untuk diskusi, kolaborasi, atau peluang baru. Jangan ragu menghubungi saya melalui formulir di samping atau media di bawah ini.</p>
+                    
                     <ul class="contact-details">
                         <li><i class="fas fa-envelope"></i>rianbellent@gmail.com</li>
                         <li><i class="fas fa-phone"></i>+628123456789</li>
@@ -923,6 +964,25 @@
                         <a href="https://www.instagram.com/rian_kiamado/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
+
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nama Anda</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Anda</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Kirim Pesan</button>
+                    </form>
+                </div>
+                
             </div>
         </div>
     </section>
