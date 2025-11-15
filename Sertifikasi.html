@@ -124,9 +124,10 @@
             justify-content: center;
         }
         
-        .certificate-pdf embed {
+        .certificate-pdf img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
             border: none;
         }
         
@@ -331,9 +332,9 @@
                     <div class="certificate-issuer">Amazon Web Services (AWS)</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
-                        <embed src="NVIDIA_Fundamentals of Deep Learning.pdf" type="application/pdf" 
-                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
+                    <div class="certificate-pdf" onclick="openModal('Nvdia.png')">
+                        <img src="Nvdia.png" alt="Certificate Preview" 
+                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-image\'></i><p>Gambar PNG tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -359,7 +360,7 @@
                         <span class="skill-tag">DevOps</span>
                         <span class="skill-tag">Security</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
+                    <button class="view-full-btn" onclick="openModal('Nvdia.png')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -381,9 +382,9 @@
                     <div class="certificate-issuer">Google Career Certificates</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
-                        <embed src="NVIDIA_Fundamentals of Deep Learning.pdf" type="application/pdf"
-                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
+                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
+                        <img src="NVIDIA_Fundamentals of Deep Learning.png" alt="Certificate Preview"
+                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-image\'></i><p>Gambar PNG tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -409,7 +410,7 @@
                         <span class="skill-tag">Tableau</span>
                         <span class="skill-tag">R Programming</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
+                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -431,9 +432,9 @@
                     <div class="certificate-issuer">ISACA</div>
                 </div>
                 <div class="certificate-body">
-                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
-                        <embed src="NVIDIA_Fundamentals of Deep Learning.pdff" type="application/pdf"
-                               onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-file-pdf\'></i><p>File PDF tidak ditemukan</p></div>'">
+                    <div class="certificate-pdf" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
+                        <img src="NVIDIA_Fundamentals of Deep Learning.png" alt="Certificate Preview"
+                             onerror="this.parentElement.innerHTML='<div class=\'pdf-placeholder\'><i class=\'fas fa-image\'></i><p>Gambar PNG tidak ditemukan</p></div>'">
                     </div>
                     <div class="certificate-details">
                         <div class="detail-item">
@@ -459,7 +460,7 @@
                         <span class="skill-tag">Compliance</span>
                         <span class="skill-tag">Governance</span>
                     </div>
-                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.pdf')">
+                    <button class="view-full-btn" onclick="openModal('NVIDIA_Fundamentals of Deep Learning.png')">
                         <i class="fas fa-expand"></i> Lihat Sertifikat Penuh
                     </button>
                 </div>
@@ -479,14 +480,14 @@
         <div class="modal-header">
             <h3 id="modalTitle">Sertifikasi Keahlian</h3>
         </div>
-        <embed class="modal-content" id="modalPdf" type="application/pdf">
+        <img class="modal-content" id="modalPdf" alt="Full Certificate">
     </div>
 
     <script>
-        function openModal(pdfUrl) {
+        function openModal(pngUrl) {
             const modal = document.getElementById('pdfModal');
             const modalPdf = document.getElementById('modalPdf');
-            modalPdf.src = pdfUrl;
+            modalPdf.src = pngUrl;
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -514,4 +515,3 @@
     </script>
 </body>
 </html>
-
