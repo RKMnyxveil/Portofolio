@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Buka PDF dari Google Drive</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buka PDF Lokal Langsung</title>
 
-<style>
-  body {
-    margin: 0; padding: 20px;
-    font-family: Arial;
-    background: #f5f7ff;
-    display: flex; flex-direction: column;
-    align-items: center;
-  }
-  #pdf-viewer {
-    width: 100%;
-    max-width: 900px;
-    height: 80vh;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: white;
-  }
-</style>
-
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #f5f7ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #pdf-viewer {
+      width: 100%;
+      max-width: 900px;
+      height: 80vh;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>📄 PDF Viewer dari Google Drive</h1>
+  <h1>📄 PDF Viewer - Langsung Tampilkan PDF</h1>
+  <div id="status">Memuat PDF...</div>
 
-<div id="status">Memuat PDF...</div>
+  <embed id="pdf-viewer" type="application/pdf" />
 
-<embed id="pdf-viewer" type="application/pdf">
+  <script>
+    // GANTI nama file PDF kamu di sini
+    const pdfFileName = " NVIDIA_Fundamentals of Deep Learning.pdf";  
 
-<script>
-  // MASUKKAN LINK PDF GOOGLE DRIVE DI SINI
-  const pdfUrl = "https://drive.google.com/file/d/1Ut9bZ1KkTqJ343okPPBEYez_GKNL6vj5/view?usp=drive_link";
+    const viewer = document.getElementById("pdf-viewer");
+    const status = document.getElementById("status");
 
-  // Tampilkan PDF
-  const viewer = document.getElementById("pdf-viewer");
-  const statusDiv = document.getElementById("status");
+    // Tampilkan PDF langsung
+    viewer.src = pdfFileName;
 
-  try {
-    viewer.src = pdfUrl;
-    statusDiv.innerHTML = "<p>✅ PDF berhasil dimuat dari Google Drive.</p>";
-  } catch (e) {
-    statusDiv.innerHTML = "<p>❌ Gagal memuat PDF.</p>";
-  }
-</script>
+    status.innerHTML = "<p>✅ PDF berhasil ditampilkan.</p>";
+  </script>
 
 </body>
 </html>
