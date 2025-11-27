@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="no-referrer-when-downgrade">
-
     <title>Rian Kia Mado - Portfolio</title>
-    
+
     <link rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-          crossorigin="anonymous" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous"
           referrerpolicy="no-referrer" />
-          
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* Base Styles */
+        /* ============ BASE ============ */
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -30,8 +27,6 @@
             --light-gray: #e2e8f0;
             --white: #ffffff;
             --black: #000000;
-
-            /* Background & Text */
             --background: #f8fafc;
             --text: #0f172a;
             --card-bg: #ffffff;
@@ -70,7 +65,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 clamp(15px, 5vw, 20px);
         }
 
         a {
@@ -87,7 +82,7 @@
             display: block;
         }
 
-        /* Header */
+        /* ============ HEADER ============ */
         .header {
             position: fixed;
             top: 0;
@@ -104,23 +99,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
         .logo a {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px; 
+            gap: 10px;
         }
-        
+
         .logo-img {
-            height: 30px;  
-            width: auto;   
-            border-radius: 50%; 
+            height: 30px;
+            width: auto;
+            border-radius: 50%;
         }
 
         .nav {
@@ -140,7 +133,6 @@
         .nav-list a {
             font-weight: 500;
             color: var(--white);
-            transition: all 0.3s ease;
             position: relative;
         }
 
@@ -168,7 +160,6 @@
             flex-direction: column;
             cursor: pointer;
             padding: 5px;
-            z-index: 10001;
         }
 
         .hamburger span {
@@ -191,7 +182,18 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
-        /* Hero */
+        .theme-toggle {
+            margin-left: 20px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--white);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+        }
+
+        /* ============ HERO ============ */
         .hero {
             padding: 120px 0 80px;
             background: var(--hero-bg);
@@ -199,134 +201,57 @@
             overflow: hidden;
         }
 
-        .theme-toggle {
-            margin-left: 20px;
-            cursor: pointer;
-            font-size: 1.4rem;
-            color: var(--white);
-            transition: 0.3s;
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
 
-        .theme-toggle:hover {
-            color: var(--primary);
-        }
-
-        .tentang{
+        .tentang p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 30px;
+            line-height: 1.7;
             text-align: justify;
+            hyphens: auto;
         }
 
-        @media (min-width: 769px) {
-            .hero-content {
-                display: flex;
-                align-items: center;
-                gap: 50px;
-                max-width: 100%;
-            }
-
-            .hero-text {
-                flex: 1;
-            }
-
-            .hero-image {
-                flex-shrink: 0;
-                margin-top: 0;
-            }
-
-            .tentang p {
-                font-size: 1.1rem;
-                color: var(--dark-gray);
-                margin-bottom: 30px;
-                line-height: 1.7;
-                text-align: justify;
-                hyphens: auto;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                padding: 0;
-            }
+        .hero-btns {
+            display: flex;
+            gap: 15px;
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                gap: 25px;
-                text-align: center;
-                padding: 0 10px;
-            }
-
-            .hero-text {
-                width: 100%;
-            }
-
-            .tentang p {
-                font-size: 1rem;
-                line-height: 1.6;
-                color: var(--dark-gray);
-                margin-bottom: 30px;
-                text-align: justify;
-                hyphens: auto;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                padding: 0 10px;
-            }
-
-            .hero-btns {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 12px;
-                font-size: 1rem;
-            }
-        }
-
-        /* [PERBAIKAN] Ukuran font & animasi H1 */
+        /* ============ HERO TEXT ANIMATION ============ */
         .hero-content h1 {
-            font-size: 3.0rem; 
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 15px;
             line-height: 1.2;
-            /* Perilaku di desktop */
-            display: flex; 
-            align-items: baseline;
-            flex-wrap: wrap; /* Izinkan wrap jika perlu */
-            opacity: 0; 
-            animation: slideUp 0.6s 0.5s ease-out forwards; 
+            opacity: 0;
+            animation: slideUp 0.6s 0.5s ease-out forwards;
         }
 
-        /* Styling untuk "Hi, I'm" */
         .hero-content h1 span:not(.typing-name) {
-            color: var(--text); 
-            white-space: nowrap; /* Mencegah "Hi," dan "I'm" terpisah */
+            color: var(--text);
+            white-space: nowrap;
         }
 
-        /* Styling untuk nama yang dianimasikan */
         .hero-content h1 .typing-name {
             color: var(--primary);
-            display: inline-block; 
-            overflow: hidden;      
-            white-space: nowrap;  
-            width: 0;             
-            border-right: 4px solid var(--accent); 
-            min-width: 1ch; /* Lebar minimum saat animasi */
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            border-right: 4px solid var(--accent);
+            min-width: 1ch;
             animation: 
-                typing 2.5s steps(15) 1.2s forwards, 
-                blink-caret .75s step-end infinite 1.2s,
-                erase 1.5s steps(15) 5.2s forwards infinite alternate; 
-        }
-
-        .hero-content h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
+                typing 2.5s steps(15) 1.2s forwards,
+                blink-caret 0.75s step-end infinite 1.2s,
+                erase 1.5s steps(15) 5.2s forwards;
         }
 
         .hero-image {
-            position: relative;
-            margin-top: 30px;
+            margin-top: 0;
         }
 
         .profile-circle {
@@ -345,12 +270,12 @@
         .profile-circle img {
             width: 90%;
             height: 90%;
-            border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--white);
+            border-radius: 50%;
         }
 
-        /* Section Header */
+        /* ============ SECTION ============ */
         .section-header {
             text-align: center;
             margin-bottom: 60px;
@@ -371,7 +296,7 @@
             border-radius: 2px;
         }
 
-        /* About */
+        /* ============ ABOUT ============ */
         .about {
             padding: 100px 0;
             background-color: var(--card-bg);
@@ -393,16 +318,14 @@
             font-size: 1.4rem;
             margin-bottom: 20px;
             color: var(--primary);
-            position: relative;
-            padding-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding-bottom: 10px;
+            position: relative;
         }
 
         .skill-category ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
         .skill-category li {
@@ -413,7 +336,7 @@
             font-weight: 500;
         }
 
-        /* Projects */
+        /* ============ PROJECTS ============ */
         .projects {
             padding: 100px 0;
             background-color: var(--background);
@@ -479,17 +402,23 @@
             font-weight: 500;
         }
 
-        /* Buttons */
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        /* ============ BUTTONS ============ */
         .btn {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 600;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid transparent;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .btn.small {
@@ -519,22 +448,7 @@
             transform: translateY(-3px);
         }
 
-        /* Project Links */
-        .project-links {
-            display: flex;
-            gap: 12px;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 480px) {
-            .project-links {
-                flex-direction: column;
-                gap: 8px;
-            }
-        }
-
-        /* Contact */
+        /* ============ CONTACT ============ */
         .contact {
             padding: 100px 0;
             background: var(--contact-bg);
@@ -546,8 +460,9 @@
             gap: 50px;
         }
 
-        .contact-info {
-            flex: 1; 
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 0;
         }
 
         .contact-info h3 {
@@ -562,8 +477,6 @@
             color: var(--dark-gray);
             font-size: 1.05rem;
             line-height: 1.6;
-            font-weight: 400;
-            letter-spacing: 0.2px;
         }
 
         .contact-details li {
@@ -613,7 +526,49 @@
             box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
         }
 
-        /* Footer */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+        }
+
+        /* ============ FOOTER ============ */
         .footer {
             background: var(--footer-bg);
             color: var(--white);
@@ -622,7 +577,7 @@
             border-top: 1px solid var(--light-gray);
         }
 
-        /* Mobile Menu */
+        /* ============ MOBILE ============ */
         @media (max-width: 768px) {
             .nav-list {
                 position: fixed;
@@ -661,6 +616,55 @@
                 display: flex;
             }
 
+            .logo a {
+                font-size: 1.2rem;
+            }
+
+            .logo-img {
+                height: 24px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-content h1 .typing-name {
+                width: auto !important;
+                border-right: none !important;
+                animation: none !important;
+                display: inline !important;
+                white-space: normal;
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 span:not(.typing-name) {
+                display: block;
+                text-align: center;
+            }
+
+            .tentang p {
+                padding: 0 10px;
+                font-size: 1rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+            }
+
             .profile-circle {
                 width: 280px;
                 height: 280px;
@@ -668,11 +672,7 @@
 
             .contact-content {
                 flex-direction: column;
-                gap: 40px; 
-            }
-
-            .social-links {
-                justify-content: flex-start;
+                gap: 40px;
             }
 
             .about-content {
@@ -683,7 +683,6 @@
 
             .skill-category {
                 max-width: 100%;
-                width: 100%;
                 text-align: center;
             }
 
@@ -691,45 +690,6 @@
                 text-align: left;
                 margin: 0 auto;
                 max-width: 400px;
-            }
-
-            /* [PERBAIKAN RESPONSIF] Atur ulang H1 di tablet/HP */
-            .hero-content h1 {
-                font-size: 2.5rem; 
-                line-height: 1.3;
-                display: block; /* Mengubah dari flex menjadi tumpukan */
-                text-align: center; 
-            }
-            /* [PERBAIKAN RESPONSIF] Atur span nama di baris baru */
-            .hero-content h1 .typing-name {
-                display: block; /* Membuat nama jadi baris baru */
-                margin: 0 auto; /* Posisikan span di tengah */
-                max-width: 100%; 
-                font-size: 2.5rem; 
-                line-height: 1.3; 
-            }
-            /* [PERBAIKAN RESPONSIF] Pastikan "Hi, I'm" juga ditumpuk */
-            .hero-content h1 span:not(.typing-name) {
-                display: block;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* [PERBAIKAN RESPONSIF] Ukuran font HP dikecilkan */
-            .hero-content h1 {
-                font-size: 2.0rem;
-                line-height: 1.4; 
-            }
-            
-            .hero-content h1 .typing-name {
-                font-size: 2.0rem; 
-                line-height: 1.4;
-            }
-
-            .profile-circle {
-                width: 250px;
-                height: 250px;
             }
 
             .section-header h2 {
@@ -740,93 +700,60 @@
                 width: 60px;
             }
 
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 .typing-name {
+                font-size: 2rem;
+            }
+
+            .profile-circle {
+                width: 250px;
+                height: 250px;
+            }
+
             .social-links a {
                 width: 45px;
                 height: 45px;
                 font-size: 1.1rem;
             }
-        }
-        .tentang{
-            text-align: justify;
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
         }
 
-        /* Animasi Keyframes */
+        /* ============ ANIMATIONS ============ */
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: 15ch; } /* 15 karakter untuk " RIAN KIA MADO" */
+            from { width: 0; }
+            to { width: 15ch; }
         }
 
         @keyframes blink-caret {
-            from, to { border-color: transparent }
+            from, to { border-color: transparent; }
             50% { border-color: var(--accent); }
         }
 
         @keyframes erase {
-            from { width: 15ch; } 
+            from { width: 15ch; }
             to { width: 0; }
         }
 
         .hero-btns {
             opacity: 0;
-            animation: slideUp 0.6s 2.7s ease-out forwards; 
-        }
-
-        /* Style untuk Formulir Kontak */
-        .contact-form {
-            flex: 1; 
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--light-gray);
-            background: var(--background); 
-            color: var(--text); 
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical; 
-            min-height: 120px;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
+            animation: slideUp 0.6s 2.7s ease-out forwards;
         }
     </style>
 </head>
@@ -839,7 +766,6 @@
                     <span>Rian Kia Mado</span>
                 </a>
             </div>
-            
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#home">Home</a></li>
@@ -864,16 +790,11 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>
-                        <span>Hi, I'm </span><span class="typing-name"> RIAN KIA MADO</span>
+                        <span>Hi, I'm</span>
+                        <span class="typing-name"> RIAN KIA MADO</span>
                     </h1>
                     <div class="tentang">
-                            <p>I am a recent graduate in Informatics Engineering
-                                from Satya Wacana Christian University, with a focus
-                                 on Database Systems. I was actively involved in campus
-                                  organizations, including the University Student Senate (SMU),
-                                   where I served as a member of the Professional Skills division.
-                                    During my studies, I also completed certification programs from
-                                     Oracle Academy and Nvidia to strengthen my technical expertise.</p>
+                        <p>I am a recent graduate in Informatics Engineering from Satya Wacana Christian University, with a focus on Database Systems. I was actively involved in campus organizations, including the University Student Senate (SMU), where I served as a member of the Professional Skills division. During my studies, I also completed certification programs from Oracle Academy and Nvidia to strengthen my technical expertise.</p>
                     </div>
                     <div class="hero-btns">
                         <a href="#projects" class="btn primary">View My Work</a>
@@ -899,19 +820,14 @@
                 <div class="skill-category">
                     <h3>PENDIDIKAN</h3>
                     <ul>
-                        <li>Bachelor’s Degree in Informatics Engineering
-                         Satya Wacana Christian University
-                         (Aug 2021 –  Jan 2027)</li>
-
-                        <li>Computer and Network Engineering 
-                         Tarunatama Getasan Vocational High School
-                         (July 2018 – May 2021)</li>
+                        <li>Bachelor’s Degree in Informatics Engineering<br>Satya Wacana Christian University<br>(Aug 2021 – Jan 2027)</li>
+                        <li>Computer and Network Engineering<br>Tarunatama Getasan Vocational High School<br>(July 2018 – May 2021)</li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>SERTIFIKASI</h3>
                     <ul>
-                        <li><a href="Sertifikasi.html"> Fundamentals of Deep Learning</a></li>
+                        <li><a href="Sertifikasi.html">Fundamentals of Deep Learning</a></li>
                         <li>Oracle Database Design</li>
                     </ul>
                 </div>
@@ -941,7 +857,7 @@
                     </div>
                     <div class="project-content">
                         <h3>Computer Vision</h3>
-                        <p>computer vision techniques for object detection and recognition.</p>
+                        <p>Computer vision techniques for object detection and recognition.</p>
                         <div class="project-tech">
                             <span>Python</span>
                             <span>OpenCV</span>
@@ -957,12 +873,28 @@
                     <div class="project-img">
                         <img src="https://placehold.co/600x400/8b5cf6/white?text=Coming+Soon" alt="Coming Soon">
                     </div>
+                    <div class="project-content">
+                        <h3>Project Coming Soon</h3>
+                        <p>More exciting projects on the way!</p>
+                        <div class="project-tech"><span>-</span></div>
+                        <div class="project-links">
+                            <a href="#" class="btn small secondary">Details</a>
+                        </div>
                     </div>
+                </div>
                 <div class="project-card">
                     <div class="project-img">
                         <img src="https://placehold.co/600x400/10b981/white?text=Coming+Soon" alt="Coming Soon">
                     </div>
+                    <div class="project-content">
+                        <h3>Project Coming Soon</h3>
+                        <p>Stay tuned for updates!</p>
+                        <div class="project-tech"><span>-</span></div>
+                        <div class="project-links">
+                            <a href="#" class="btn small secondary">Details</a>
+                        </div>
                     </div>
+                </div>
             </div>
         </div>
     </section>
@@ -973,13 +905,10 @@
                 <h2>Contact</h2>
                 <div class="divider"></div>
             </div>
-            
             <div class="contact-content">
-
                 <div class="contact-info">
                     <h3>Hubungi Saya</h3>
                     <p>Saya selalu terbuka untuk diskusi, kolaborasi, atau peluang baru. Jangan ragu menghubungi saya melalui formulir di samping atau media di bawah ini.</p>
-                    
                     <ul class="contact-details">
                         <li><i class="fas fa-envelope"></i>priscianusmikaelkiamado@gmail.com</li>
                         <li><i class="fas fa-phone"></i>+628123456789</li>
@@ -990,7 +919,6 @@
                         <a href="https://www.instagram.com/rian_kiamado/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
                 <div class="contact-form">
                     <form action="https://formspree.io/f/mvgdrwek" method="POST">
                         <div class="form-group">
@@ -1008,7 +936,6 @@
                         <button type="submit" class="btn primary">Kirim Pesan</button>
                     </form>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -1070,13 +997,6 @@
                 }
             });
         });
-
-        function setVh() {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-        setVh();
-        window.addEventListener('resize', setVh);
     </script>
 </body>
 </html>
