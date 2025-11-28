@@ -385,11 +385,19 @@
             gap: 50px;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .skill-category {
             flex: 1;
-            max-width: 450px;
+            max-width: 300px;
+            min-height: 250px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .skill-category h3 {
@@ -400,6 +408,7 @@
             padding-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 2px solid var(--primary);
         }
 
         .skill-category ul {
@@ -682,18 +691,20 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 30px;
+                padding: 0 15px;
             }
 
             .skill-category {
                 max-width: 100%;
                 width: 100%;
                 text-align: center;
+                padding: 25px;
             }
 
             .skill-category ul {
                 text-align: left;
                 margin: 0 auto;
-                max-width: 400px;
+                max-width: 350px;
             }
 
             /* [PERBAIKAN RESPONSIF] Atur ulang H1 di tablet/HP */
